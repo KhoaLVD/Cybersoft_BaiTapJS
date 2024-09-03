@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./output.css" />
+    <title>Bài tập JS_KhoaLVD</title>
+  </head>
+  <body>
+    <section class="max-w-screen-xl mx-auto p-4 mt-8 border-2 rounded-md">
+      <h3 class="mb-4 text-3xl text-center">Quản lý tuyển sinh</h3>
+      <div class="tuyenSinhContent md:flex justify-evenly">
+        <div class="leftSide">
+          <h4>Điểm chuẩn của hội đồng</h4>
+          <input
+            type="number"
+            placeholder="Điểm chuẩn của hội đồng"
+            id="diemChuan"
+          />
+          <br />
+          <h4 class="mt-4">
+            Khu vực ưu tiên của thí sinh (A,B,C hoặc X nếu không có)
+          </h4>
+          <input type="text" placeholder="Khu vực" id="khuVuc" />
+          <h4 class="mt-4">
+            Đối tượng ưu tiên của thí sinh (1,2,3, hoặc 0 nếu không có)
+          </h4>
+          <input type="number" placeholder="Đối tượng dự thi" id="doiTuong" />
+        </div>
+        <div class="rightSide">
+          <h4>Điểm toán</h4>
+          <input type="number" placeholder="Điểm toán" id="diemToan" />
+          <h4 class="mt-4">Điểm lý</h4>
+          <input type="number" placeholder="Điểm lý" id="diemLy" />
+          <h4 class="mt-4">Điểm hoá</h4>
+          <input type="number" placeholder="Điểm hoá" id="diemHoa" />
+        </div>
+      </div>
+
+      <button
+        onclick="quanLyTuyenSinh()"
+        class="py-4 px-16 ml-52 text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg my-8 text-center"
+      >
+        Tính kết quả
+      </button>
+      <div id="ketQuaTuyenSinh"></div>
+    </section>
+    <section class="max-w-screen-xl mx-auto p-4 mt-16 border-2 rounded-md">
+      <h3>Tính tiền điện</h3>
+      <h4 class="mt-4">Vui lòng nhập tên người dùng:</h4>
+      <input type="text" placeholder="Tên người dùng" id="userName" />
+      <h4 class="mt-4">Vui lòng nhập số kw:</h4>
+      <input type="number" placeholder="Số kw" id="soKw" />
+      <br />
+      <button
+        onclick="tinhSoKW()"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 mt-4"
+      >
+        Tính số kw
+      </button>
+      <div id="ketQuaTienDien"></div>
+    </section>
+    <section class="max-w-screen-xl mx-auto p-4 mt-16 border-2 rounded-md">
+      <h3>Thuế thu nhập cá nhân</h3>
+      <h4 class="mt-4">Vui lòng nhập họ và tên người dùng:</h4>
+      <input type="text" placeholder="Họ và tên" id="userNameTax" />
+      <h4 class="mt-4">Vui lòng nhập tổng thu nhập hàng năm (triệu):</h4>
+      <input
+        type="number"
+        placeholder="Tổng thu nhập năm (triệu)"
+        id="salary"
+      />
+      <h4 class="mt-4">Vui lòng số người phụ thuộc:</h4>
+      <input type="number" placeholder="Số người phụ thuộc" id="people" />
+      <br />
+      <button
+        onclick="thueThuNhapCaNhan()"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 mt-4"
+      >
+        Tính thuế thu nhập cá nhân
+      </button>
+      <div id="ketQuaThue"></div>
+    </section>
+    <section class="max-w-screen-xl mx-auto p-4 mt-16 mb-8 border-2 rounded-md">
+      <h3>Tính tiền cáp</h3>
+      <h4 class="mt-4">Vui lòng chọn loại khách hàng:</h4>
+      <button
+        onclick="isNhaDan() "
+        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 mt-4"
+      >
+        Nhà dân
+      </button>
+      <button
+        onclick="isDoanhNghiep()"
+        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 mt-4"
+      >
+        Doanh nghiệp
+      </button>
+      <br />
+      <div id="doanhNghiepOrNhaDan"></div>
+      <h4 class="mt-4">Vui lòng nhập mã khách hàng:</h4>
+      <input type="text" placeholder="Mã khách hàng" id="userCode" />
+      <h4 class="mt-4">Vui lòng nhập số kênh cao cấp:</h4>
+      <input type="number" placeholder="Số kênh cao cấp" id="vipChanel" />
+      <h4 class="mt-4">
+        Vui lòng nhập số kết nối (dành cho khách hàng doanh nghiệp):
+      </h4>
+      <input type="number" placeholder="Số kết nối" id="connectNumb" />
+      <br />
+      <button
+        onclick="tienCap()"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 mt-4"
+      >
+        Tính tiền cáp
+      </button>
+      <div id="tongTienCap"></div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
